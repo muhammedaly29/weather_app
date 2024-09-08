@@ -16,7 +16,7 @@ class WeatherApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => GetWeatherCubit(),
+      create: (context) => GetWeatherCubit(WeatherInitialState()),
       child: Builder(
         builder: (context) => BlocBuilder<GetWeatherCubit, WeatherState>(
           builder: (context, state) {
@@ -28,7 +28,7 @@ class WeatherApp extends StatelessWidget {
                         .weatherModel
                         ?.status),
               ),
-              home: HomeView(),
+              home:  HomeView(),
             );
           },
         ),

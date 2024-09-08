@@ -4,7 +4,8 @@ import 'package:weather_app/Cubits/Get_Weather_Cubit/get_weather_cubit.dart';
 import 'package:weather_app/main.dart';
 
 class SearchView extends StatelessWidget {
-  const SearchView({super.key});
+  SearchView({super.key});
+  String? cityName;
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +37,9 @@ class SearchView extends StatelessWidget {
         child: Center(
           child: TextField(
             onSubmitted: (value) async {
-              var getWeatherCubit = BlocProvider.of<GetWeatherCubit>(context);
-              getWeatherCubit.getWeather(cityName: value);
+              cityName = value;
+              BlocProvider.of<GetWeatherCubit>(context)
+                  .getWeather(cityName: cityName!);
               Navigator.pop(context);
             },
             decoration: const InputDecoration(
